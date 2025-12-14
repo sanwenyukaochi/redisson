@@ -30,4 +30,18 @@ public class Lec09ListQueueStackTest extends BaseTest {
                 .verifyComplete();
     }
 
+    @Test
+    public void queueTest(){ // Queue
+        RQueueReactive<Long> queue = this.client.getQueue("number-input", LongCodec.INSTANCE);
+        Mono<Void> queuePoll = queue.poll()
+                .repeat(3)
+                .doOnNext(IO::println)
+                .then();
+        StepVerifier.create(queuePoll)
+                .verifyComplete();
+        StepVerifier.create(queue.size())
+                .expectNext(6)
+                .verifyComplete();
+    }
+
 }

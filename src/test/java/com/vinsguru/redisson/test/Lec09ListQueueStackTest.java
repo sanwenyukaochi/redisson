@@ -23,4 +23,16 @@ public class Lec09ListQueueStackTest extends BaseTest {
         IO.println("List size: " + list.size());
     }
 
+    @Test
+    public void queueTest(){ // Queue
+        RQueue<Long> queue = client.getQueue("number-input", LongCodec.INSTANCE);
+
+        for (int i = 0; i < 3; i++) {
+            Long value = queue.poll();
+            IO.println(value);
+        }
+
+        IO.println("Queue size: " + queue.size());
+    }
+
 }
