@@ -35,4 +35,20 @@ public class Lec06MapTest extends BaseTest {
                 .verifyComplete();
     }
 
+    @Test
+    public void mapTest3(){
+        // Map<Integer, Student>
+        RMapReactive<Integer, Student> map = this.client.getMap("users", new TypedJsonJacksonCodec(Integer.class, Student.class));
+
+        Student student1 = new Student("sam", 10, "atlanta", List.of(1, 2, 3));
+        Student student2 = new Student("jake", 30, "miami", List.of(10, 20, 30));
+
+        Mono<Student> mono1 = map.put(1, student1);
+        Mono<Student> mono2 = map.put(2, student2);
+
+        StepVerifier.create(mono1.concatWith(mono2).then())
+                .verifyComplete();
+
+    }
+
 }

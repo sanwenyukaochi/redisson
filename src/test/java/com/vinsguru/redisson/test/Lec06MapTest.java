@@ -34,4 +34,21 @@ public class Lec06MapTest extends BaseTest {
         Assertions.assertEquals("miami", map.get("city"));
     }
 
+    @Test
+    public void mapTest3(){
+        // Map<Integer, Student>
+        RMap<Integer, Student> map = client.getMap("users", new TypedJsonJacksonCodec(Integer.class, Student.class));
+        Student student1 = new Student("sam", 10, "atlanta", List.of(1, 2, 3));
+        Student student2 = new Student("jake", 30, "miami", List.of(10, 20, 30));
+
+        map.put(1, student1);
+        map.put(2, student2);
+
+        Student s1 = map.get(1);
+        Student s2 = map.get(2);
+
+        Assertions.assertEquals("sam", s1.getName());
+        Assertions.assertEquals("jake", s2.getName());
+    }
+
 }
