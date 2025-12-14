@@ -22,4 +22,11 @@ public abstract class BaseTest {
         this.redissonConfig.getClient().shutdown();
     }
 
+    protected void sleep(long millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

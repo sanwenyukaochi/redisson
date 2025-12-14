@@ -38,7 +38,7 @@ public class Lec01KeyValueTest extends BaseTest {
         Assertions.assertEquals("sam", value);
 
         //extend
-        Thread.sleep(5000);
+        sleep(1000);
         boolean extended = bucket.expire(Duration.ofSeconds(60));
         Assertions.assertTrue(extended);
 
@@ -49,7 +49,5 @@ public class Lec01KeyValueTest extends BaseTest {
         Assertions.assertTrue(ttl > 0);
         Assertions.assertTrue(ttl <= Duration.ofSeconds(60).toMillis());
     }
-
-
 
 }

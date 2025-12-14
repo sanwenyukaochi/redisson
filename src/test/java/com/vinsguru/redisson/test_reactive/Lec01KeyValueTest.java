@@ -44,7 +44,7 @@ public class Lec01KeyValueTest extends BaseTest{
         StepVerifier.create(set.then(get))
                 .verifyComplete();
         //extend
-        Thread.sleep(5000);
+        sleep(5000);
         Mono<Boolean> mono = bucket.expire(Duration.ofSeconds(60));
         StepVerifier.create(mono)
                 .expectNext(true)
