@@ -28,4 +28,25 @@ public class Lec08LocalCachedMapTest extends BaseTest {
         this.studentsMap = redissonClient.getLocalCachedMap(mapOptions);
     }
 
+    @Test
+    public void appServer1(){
+        Student student1 = new Student("sam", 10, "atlanta", List.of(1, 2, 3));
+        Student student2 = new Student("jake", 30, "miami", List.of(10, 20, 30));
+
+        this.studentsMap.put(1, student1);
+        this.studentsMap.put(2, student2);
+
+        Flux.interval(Duration.ofSeconds(1))
+                .doOnNext(i -> System.out.println(i + " ==> " + studentsMap.get(1)))
+                .subscribe();
+
+        sleep(600000);
+    }
+
+    @Test
+    public void appServer2(){
+        Student student1 = new Student("sam-updated", 10, "atlanta", List.of(1, 2, 3));
+        this.studentsMap.put(1, student1);
+    }
+
 }
