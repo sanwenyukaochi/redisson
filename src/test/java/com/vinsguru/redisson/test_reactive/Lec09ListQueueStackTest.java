@@ -44,4 +44,18 @@ public class Lec09ListQueueStackTest extends BaseTest {
                 .verifyComplete();
     }
 
+    @Test
+    public void stackTest(){ // Stack
+        RDequeReactive<Long> deque = this.client.getDeque("number-input", LongCodec.INSTANCE);
+        Mono<Void> stackPoll = deque.pollLast()
+                .repeat(3)
+                .doOnNext(IO::println)
+                .then();
+        StepVerifier.create(stackPoll)
+                .verifyComplete();
+        StepVerifier.create(deque.size())
+                .expectNext(2)
+                .verifyComplete();
+    }
+
 }
