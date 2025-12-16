@@ -37,4 +37,14 @@ public class Lec16PriorityQueueTest extends BaseTest {
         sleep(60_000);
     }
 
+    @Test
+    public void consumer() {
+        while (true) {
+            UserOrder orders = this.priorityQueue.takeItems();
+            if (orders != null) IO.println(orders); else break;
+            sleep(500);
+        }
+        sleep(600_000);
+    }
+
 }

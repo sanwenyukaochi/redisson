@@ -42,4 +42,13 @@ public class Lec16PriorityQueueTest extends BaseTest {
         sleep(60_000);
     }
 
+    @Test
+    public void consumer(){
+        this.priorityQueue.takeItems()
+                .delayElements(Duration.ofMillis(500))
+                .doOnNext(IO::println)
+                .subscribe();
+        sleep(600_000);
+    }
+
 }
