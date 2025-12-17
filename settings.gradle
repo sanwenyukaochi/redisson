@@ -1,2 +1,3 @@
 rootProject.name = 'redis'
 include "project-redisson"
+include "project-spring"
