@@ -18,7 +18,7 @@ repositories {
 }
 
 ext {
-    redissonVersion = '3.52.0'
+    redissonVersion = '4.0.0'
     lombokVersion   = '1.18.42'
     junitVersion    = '6.0.1'
     reactorBom      = '2024.0.6'
