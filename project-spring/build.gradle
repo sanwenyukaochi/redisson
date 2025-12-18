@@ -28,8 +28,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-aop'
-    
+    implementation 'org.springframework.boot:spring-boot-starter-aop:3.5.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
     implementation "org.redisson:redisson:${redissonVersion}"
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
@@ -40,6 +41,7 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation "io.projectreactor:reactor-test"
     
 //    testImplementation platform("io.projectreactor:reactor-bom:${reactorBom}")
 //    testImplementation "io.projectreactor:reactor-test"
